@@ -4,9 +4,11 @@ import { Heading, Text } from '@/components/Atoms'
 
 export const Post = ({ href, description, title }: PostProps) => {
     return (
-        <a className={styles.post} href={href}>
+        <div className={styles.post}>
             <Text>{description}</Text>
-            <Heading size='xsmall'>{title}</Heading>
-        </a>
+            <a className={styles.link} href={href}>
+                <Heading size='xsmall'>{title}</Heading>
+            </a>
+        </div>
     )
 }

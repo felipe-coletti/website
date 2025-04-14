@@ -1,16 +1,22 @@
 import styles from './styles.module.css'
-import { Heading } from '@/components/Atoms'
+import { Heading, Link } from '@/components/Atoms'
 
 export const Header = () => {
     return (
         <div className={styles.header}>
             <Heading>Felipe Coletti</Heading>
-            <ul>
+            <ul style={{ alignItems: 'center', display: 'flex', gap: '0.75rem', listStyle: 'none' }}>
                 <li>
-                    <a href='/work'>Work</a>
-                    <a href='/blog'>Blog</a>
-                    <a href='/about'>About</a>
-                    <a href='/contact'>Contact</a>
+                    <Link href='/work'>Work</Link>
+                </li>
+                <li>
+                    <Link href='/blog'>Blog</Link>
+                </li>
+                <li>
+                    <Link href='/about'>About</Link>
+                </li>
+                <li>
+                    <Link href='/contact'>Contact</Link>
                 </li>
             </ul>
         </div>
