@@ -1,6 +1,6 @@
 'use client'
 import { useState, useEffect } from 'react'
-import { Card, Gallery, Heading, InfiniteScroll, Input, Text } from '@/components'
+import { Card, Gallery, Heading, InfiniteScroll, Input, PageLayout, Text } from '@/components'
 import { render } from '@/utils/render'
 
 type CardItem = {
@@ -111,9 +111,8 @@ const Work = () => {
     }
 
     return (
-        <div>
+        <PageLayout>
             <Heading>Work</Heading>
-            <Text>My work</Text>
             <Input value={query} onChange={(e) => setQuery(e.target.value)} placeholder='Search' />
             <Gallery>
                 {render({
@@ -137,7 +136,7 @@ const Work = () => {
                     ),
                 })}
             </Gallery>
-        </div>
+        </PageLayout>
     )
 }
 

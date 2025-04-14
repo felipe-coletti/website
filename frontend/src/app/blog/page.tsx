@@ -1,6 +1,6 @@
 'use client'
 import { useState, useEffect } from 'react'
-import { Post, Heading, InfiniteScroll, Input, Text } from '@/components'
+import { Post, Heading, InfiniteScroll, Input, Text, PageLayout } from '@/components'
 import styles from './styles.module.css'
 import { formatDate, formatReadingTime } from '@/utils/formaters'
 import { render } from '@/utils/render'
@@ -83,7 +83,7 @@ const Blog = () => {
     }
 
     return (
-        <div className={styles.page}>
+        <PageLayout>
             <Heading>Blog</Heading>
             <Input value={query} onChange={(e) => setQuery(e.target.value)} placeholder='Search' />
             <div className={styles.content}>
@@ -107,7 +107,7 @@ const Blog = () => {
                     ),
                 })}
             </div>
-        </div>
+        </PageLayout>
     )
 }
 

@@ -19,6 +19,12 @@ html {
     transition: background-color 0.2s ease, color 0.2s ease;
 }
 
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
 @media (prefers-color-scheme: dark) {
     :root {
         --color-accent: #5c1a1a;
