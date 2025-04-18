@@ -86,11 +86,11 @@ const Blog = () => {
         <PageLayout>
             <Heading>Blog</Heading>
             <Input value={query} onChange={(e) => setQuery(e.target.value)} placeholder='Search' />
-            <div className={styles.content}>
-                {render({
-                    isLoading,
-                    items,
-                    renderItems: () => (
+            {render({
+                isLoading,
+                items,
+                renderItems: () => (
+                    <div className={styles.content}>
                         <InfiniteScroll
                             items={items}
                             loadMore={loadMore}
@@ -104,9 +104,9 @@ const Blog = () => {
                                 />
                             )}
                         />
-                    ),
-                })}
-            </div>
+                    </div>
+                ),
+            })}
         </PageLayout>
     )
 }
