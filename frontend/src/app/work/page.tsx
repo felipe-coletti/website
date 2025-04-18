@@ -114,11 +114,11 @@ const Work = () => {
         <PageLayout>
             <Heading>Work</Heading>
             <Input value={query} onChange={(e) => setQuery(e.target.value)} placeholder='Search' />
-            <Gallery>
-                {render({
-                    isLoading,
-                    items,
-                    renderItems: () => (
+            {render({
+                isLoading,
+                items,
+                renderItems: () => (
+                    <Gallery>
                         <InfiniteScroll
                             items={items}
                             loadMore={loadMore}
@@ -133,9 +133,9 @@ const Work = () => {
                                 />
                             )}
                         />
-                    ),
-                })}
-            </Gallery>
+                    </Gallery>
+                ),
+            })}
         </PageLayout>
     )
 }
