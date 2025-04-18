@@ -1,0 +1,17 @@
+.tabs {
+    align-items: center;
+    display: flex;
+    list-style: none;
+}
+
+.tab {
+    color: var(--color-secondary-text);
+    font-size: 0.875rem;
+    padding: 0.75rem;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.tab:hover {
+    color: var(--color-primary-text);
+}
