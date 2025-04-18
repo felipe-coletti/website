@@ -23,7 +23,6 @@
     top: 0;
     transition: opacity 0.2s ease;
     width: 100%;
-    z-index: 1;
 }
 
 .card:hover .backdrop {
