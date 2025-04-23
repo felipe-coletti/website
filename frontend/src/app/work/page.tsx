@@ -20,7 +20,6 @@ const Work = () => {
 
     const limit = 10
 
-    /*
     const data = {
         items: [
             {
@@ -74,7 +73,6 @@ const Work = () => {
         ],
         hasMore: false,
     }
-    */
 
     useEffect(() => {
         const timeout = setTimeout(() => setDebouncedQuery(query), 300)
@@ -96,7 +94,7 @@ const Work = () => {
 
         try {
             const res = await fetch(`/api/works?query=${debouncedQuery}&page=${page}&limit=${limit}`)
-            const data = await res.json()
+            //const data = await res.json()
 
             setItems((prev) => [...prev, ...data.items])
             setPage((prev) => prev + 1)

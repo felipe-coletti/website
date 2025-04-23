@@ -1,6 +1,6 @@
 import { Tabs } from '../Tabs'
 import styles from './styles.module.css'
-import { Heading, Link } from '@/components/Atoms'
+import { Heading, ThemeToggle } from '@/components/Atoms'
 
 export const Header = () => {
     const tabs = [
@@ -26,6 +26,7 @@ export const Header = () => {
         <div className={styles.header}>
             <Heading>Felipe Coletti</Heading>
             <Tabs tabs={tabs} />
+            <ThemeToggle />
         </div>
     )
 }

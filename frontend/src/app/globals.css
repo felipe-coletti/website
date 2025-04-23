@@ -1,10 +1,4 @@
 :root {
-    --color-accent: #5c1a1a;
-    --color-backdrop: #00000080;
-    --color-background: #ffffff;
-    --color-border: #d8d8d8;
-    --color-primary-text: #0b0b0b;
-    --color-secondary-text: #717171;
     --font-weight-bold: 600;
 }
 
@@ -20,20 +14,8 @@ html {
 }
 
 .container {
+    background-color: var(--color-background);
     display: flex;
     flex-direction: column;
-    height: 100vh;
-}
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --color-accent: #5c1a1a;
-        --color-background: #000000;
-        --color-primary-text: #ffffff;
-        --color-secondary-text: #e5e5e5;
-    }
-
-    html {
-        color-scheme: dark;
-    }
+    min-height: 100vh;
 }

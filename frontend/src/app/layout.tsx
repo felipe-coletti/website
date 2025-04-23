@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import { ThemeProvider } from '@/context/ThemeContext'
 import { Header } from '@/components'
 
 export const metadata: Metadata = {
@@ -15,10 +16,12 @@ export default function RootLayout({
     return (
         <html lang='en'>
             <body>
-                <div className='container'>
-                    <Header />
-                    {children}
-                </div>
+                <ThemeProvider>
+                    <div className='container'>
+                        <Header />
+                        {children}
+                    </div>
+                </ThemeProvider>
             </body>
         </html>
     )

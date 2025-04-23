@@ -1,9 +1,28 @@
 .gallery {
-    column-count: 3;
-    column-gap: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    grid-auto-rows: 160px;
+    grid-auto-flow: dense;
+    grid-gap: 1rem;
 }
 
-.gallery > * {
-    break-inside: avoid;
-    margin-bottom: 1rem;
+.gallery > :nth-child(7n + 1) {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.gallery > :nth-child(7n + 3) {
+    grid-column: span 2;
+}
+
+.gallery > :nth-child(7n + 5) {
+    grid-row: span 2;
+}
+
+.gallery > :nth-child(14n + 6) {
+    grid-column: span 3;
+}
+
+.gallery > :nth-child(14n + 10) {
+    grid-row: span 2;
 }
