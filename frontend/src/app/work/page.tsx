@@ -1,139 +1,113 @@
 'use client'
-import { useState, useEffect } from 'react'
+import { useState, useRef, useEffect, useCallback } from 'react'
 import { Card, Gallery, Heading, InfiniteScroll, Input, PageLayout, Text } from '@/components'
-import { render } from '@/utils/render'
+import { useInfiniteScroll } from '@/hooks/useInfiniteScroll'
 
-type CardItem = {
+type CardType = {
     id: string
     name: string
     src: string
-    description: string
 }
 
 const Work = () => {
-    const [isLoading, setIsLoading] = useState<boolean>(true)
-    const [items, setItems] = useState<CardItem[]>([])
-    const [page, setPage] = useState(1)
-    const [hasMore, setHasMore] = useState(true)
-    const [query, setQuery] = useState('')
-    const [debouncedQuery, setDebouncedQuery] = useState(query)
+    const [query, setQuery] = useState<string>('')
+    const [projects, setProjects] = useState<CardType[]>([])
+    const [page, setPage] = useState<number>(0)
+    const [hasMore, setHasMore] = useState<boolean>(true)
+    const [isError, setIsError] = useState<boolean>(false)
+    const [isLoading, setIsLoading] = useState<boolean>(false)
+    const sentinelRef = useRef<HTMLDivElement>(null)
 
-    const limit = 10
+    const mockedData = [
+        { id: '0', name: 'Project 0', src: 'https://picsum.photos/200' },
+        { id: '1', name: 'Project 1', src: 'https://picsum.photos/200' },
+        { id: '2', name: 'Project 2', src: 'https://picsum.photos/200' },
+        { id: '3', name: 'Project 3', src: 'https://picsum.photos/200' },
+        { id: '4', name: 'Project 4', src: 'https://picsum.photos/200' },
+        { id: '5', name: 'Project 5', src: 'https://picsum.photos/200' },
+        { id: '6', name: 'Project 6', src: 'https://picsum.photos/200' },
+        { id: '7', name: 'Project 7', src: 'https://picsum.photos/200' }
+    ]
 
-    const data = {
-        items: [
-            {
-                id: '0',
-                name: 'Project 0',
-                description: 'Description',
-                src: 'https://picsum.photos/200/300',
-            },
-            {
-                id: '1',
-                name: 'Project 1',
-                description: 'Description',
-                src: 'https://picsum.photos/200/300',
-            },
-            {
-                id: '2',
-                name: 'Project 2',
-                description: 'Description',
-                src: 'https://picsum.photos/200',
-            },
-            {
-                id: '3',
-                name: 'Project 3',
-                description: 'Description',
-                src: 'https://picsum.photos/200/300',
-            },
-            {
-                id: '4',
-                name: 'Project 4',
-                description: 'Description',
-                src: 'https://picsum.photos/200',
-            },
-            {
-                id: '5',
-                name: 'Project 5',
-                description: 'Description',
-                src: 'https://picsum.photos/200',
-            },
-            {
-                id: '6',
-                name: 'Project 6',
-                description: 'Description',
-                src: 'https://picsum.photos/200/300',
-            },
-            {
-                id: '7',
-                name: 'Project 7',
-                description: 'Description',
-                src: 'https://picsum.photos/200',
-            },
-        ],
-        hasMore: false,
-    }
-
-    useEffect(() => {
-        const timeout = setTimeout(() => setDebouncedQuery(query), 300)
-        return () => clearTimeout(timeout)
-    }, [query])
-
-    useEffect(() => {
-        setItems([])
-        setPage(1)
-        setHasMore(true)
-    }, [debouncedQuery])
-
-    useEffect(() => {
-        if (page === 1) loadMore()
-    }, [page, debouncedQuery])
-
-    const loadMore = async (): Promise<void> => {
-        if (!hasMore) return
+    const fetchProjects = async (page: number, query: string) => {
+        const url = `/api/work?page=${page}&query=${encodeURIComponent(query)}`
 
         try {
-            const res = await fetch(`/api/works?query=${debouncedQuery}&page=${page}&limit=${limit}`)
-            //const data = await res.json()
-
-            setItems((prev) => [...prev, ...data.items])
-            setPage((prev) => prev + 1)
-
-            if (!data.hasMore || data.items.length < limit) setHasMore(false)
-        } catch (err) {
-            console.error('Error loading items:', err)
-            setHasMore(false)
-        } finally {
-            setIsLoading(false)
+            const res = await fetch(url)
+            if (!res.ok) {
+                throw new Error('Network response was not ok')
+            }
+            const data = await res.json()
+            if (data.projects.length === 0) {
+                setHasMore(false)
+            }
+            return data.projects
+        } catch (error) {
+            console.error('Fetch error:', error)
+            if (!isError) {
+                setIsError(true)
+            }
+            return []
         }
     }
+
+    const loadProjects = useCallback(async () => {
+        if (isLoading || isError) return
+
+        setIsLoading(true)
+        const newProjects = await fetchProjects(page, query)
+        setProjects((prev) => [...prev, ...newProjects])
+        setIsLoading(false)
+    }, [page, query, isError, isLoading])
+
+    useEffect(() => {
+        if (!isError) {
+            loadProjects()
+        }
+    }, [page, query, isError, loadProjects])
+
+    const handleSearch = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+        setQuery(e.target.value)
+        setPage(0)
+        setHasMore(true)
+        setProjects([])
+        setIsError(false)
+    }, [])
+
+    const loadMore = () => {
+        if (hasMore && !isError && !isLoading) {
+            setPage((prevPage) => prevPage + 1)
+        }
+    }
+
+    useInfiniteScroll({
+        sentinelRef,
+        onLoadMore: loadMore,
+        canLoadMore: hasMore && !isError && !isLoading
+    })
 
     return (
         <PageLayout>
             <Heading>Work</Heading>
-            <Input value={query} onChange={(e) => setQuery(e.target.value)} placeholder='Search' />
-            {render({
-                isLoading,
-                items,
-                renderItems: () => (
+            <Input value={query} onChange={(e) => handleSearch(e)} placeholder='Search' />
+            {isError ? (
+                <div className='end-message'>
+                    <Text>Failed to load projects. Please try again later.</Text>
+                </div>
+            ) : (
+                <InfiniteScroll hasMore={hasMore} ref={sentinelRef}>
                     <Gallery>
-                        <InfiniteScroll
-                            items={items}
-                            loadMore={loadMore}
-                            hasMore={hasMore}
-                            renderItem={(item) => (
-                                <Card
-                                    key={item.id}
-                                    src={item.src}
-                                    title={item.name}
-                                    description={item.description}
-                                    href={`/work/${item.id}`}
-                                />
-                            )}
-                        />
+                        {projects.map((project) => (
+                            <Card
+                                key={project.id}
+                                title={project.name}
+                                src={project.src}
+                                href={`/work/${project.id}`}
+                            />
+                        ))}
                     </Gallery>
-                ),
-            })}
+                </InfiniteScroll>
+            )}
         </PageLayout>
     )
 }

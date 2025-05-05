@@ -1,12 +1,23 @@
 .link {
-    color: var(--color-primary-text);
+    align-items: center;
+    border-bottom: 1px solid transparent;
+    color: var(--color-text-primary);
     cursor: pointer;
+    display: inline-flex;
     font-size: 0.875rem;
-    font-weight: var(--font-weight-bold);
+    gap: 0.25rem;
     text-decoration: none;
     transition: color 0.2s ease;
 }
 
+.linkArrow {
+    transition: transform 0.2s ease;
+}
+
+.link:hover .linkArrow {
+    transform: translateX(2px);
+}
+
 .link:hover {
-    color: var(--color-accent);
+    border-bottom-color: var(--color-text-primary);
 }

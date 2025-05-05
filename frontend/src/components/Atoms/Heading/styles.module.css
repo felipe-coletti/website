@@ -1,6 +1,7 @@
 .heading {
-    color: var(--color-primary-text);
-    font-weight: var(--font-weight-bold);
+    color: var(--color-heading, var(--color-text-primary));
+    font-family: var(--font-serif);
+    letter-spacing: 0.05rem;
     text-transform: uppercase;
 }
 
