@@ -1,16 +1,9 @@
 'use client'
-
 import { useState, useRef, useCallback, useEffect } from 'react'
 import styles from './styles.module.css'
+import { PageListProps } from './PageList.types'
 import { Heading, Input, InfiniteScroll, Text } from '@/components'
 import { useInfiniteScroll } from '@/hooks/useInfiniteScroll'
-
-export type PageListProps<T> = {
-    title: string
-    placeholder: string
-    fetchItems: (page: number, query: string) => Promise<T[]>
-    children: (items: T[]) => React.ReactNode
-}
 
 export const PageList = <T,>({ title, placeholder, fetchItems, children }: PageListProps<T>) => {
     const [query, setQuery] = useState('')
