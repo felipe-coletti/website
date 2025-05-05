@@ -1,5 +1,5 @@
 export interface PostProps {
     href: string
-    description: string
+    date: string
     title: string
 }
