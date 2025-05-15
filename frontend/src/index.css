@@ -1,0 +1,20 @@
+:root {
+	--font-serif: auto;
+	--font-weight-bold: 600;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: sans-serif;
+}
+
+html {
+	transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.end-message {
+	text-align: center;
+	width: 100%;
+}

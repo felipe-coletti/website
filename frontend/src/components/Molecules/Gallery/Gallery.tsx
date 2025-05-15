@@ -1,6 +1,6 @@
-import { GalleryProps } from './Gallery.types'
+import type { GalleryProps } from './Gallery.types'
 import styles from './styles.module.css'
 
 export const Gallery = ({ children }: GalleryProps) => {
-    return <div className={styles.gallery}>{children}</div>
+	return <div className={styles.gallery}>{children}</div>
 }
