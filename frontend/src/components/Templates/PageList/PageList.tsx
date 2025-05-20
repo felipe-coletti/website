@@ -76,7 +76,7 @@ export const PageList = <T,>({ title, placeholder, fetchItems, children }: PageL
 			<Heading>{title}</Heading>
 			<Input value={query} onChange={handleSearch} placeholder={placeholder} />
 			{message ? (
-				<div className='end-message'>
+				<div className='message'>
 					<Text>{message}</Text>
 				</div>
 			) : (
