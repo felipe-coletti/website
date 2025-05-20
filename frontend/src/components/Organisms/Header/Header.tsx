@@ -6,7 +6,7 @@ export const Header = () => {
 	const tabs = [
 		{
 			title: 'Work',
-			href: '/work'
+			href: '/'
 		},
 		{
 			title: 'Blog',
