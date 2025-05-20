@@ -24,9 +24,11 @@ export const Header = () => {
 
 	return (
 		<div className={styles.header}>
-			<Heading>Felipe Coletti</Heading>
-			<Tabs tabs={tabs} />
-			<ThemeToggle />
+			<div className={`${styles.container} page-limit`}>
+				<Heading>Felipe Coletti</Heading>
+				<Tabs tabs={tabs} />
+				<ThemeToggle />
+			</div>
 		</div>
 	)
 }

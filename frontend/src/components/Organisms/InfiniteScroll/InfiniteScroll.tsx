@@ -7,7 +7,7 @@ export const InfiniteScroll = forwardRef<HTMLDivElement, InfiniteScrollProps>(({
 	return (
 		<div className={styles.container}>
 			{children}
-			<div ref={ref} className='end-message'>
+			<div ref={ref} className='message'>
 				<Text>{hasMore ? 'Loading...' : 'You have reached the end.'}</Text>
 			</div>
 		</div>
