@@ -3,7 +3,7 @@ import { PageList, Post } from '../../components'
 import { formatDate, formatReadingTime } from '../../utils/formaters'
 
 type PostType = {
-	id: string
+	slug: string
 	date: string
 	readingTime: number
 	title: string
@@ -22,7 +22,12 @@ export const Blog = () => {
 			{(items: PostType[]) => (
 				<div className={styles.content}>
 					{items.map(post => (
-						<Post key={post.id} date={`${formatDate(post.date)} • ${formatReadingTime(post.readingTime)}`} title={post.title} href={`/blog/${post.id}`} />
+						<Post
+							key={post.slug}
+							date={`${formatDate(post.date)} • ${formatReadingTime(post.readingTime)}`}
+							title={post.title}
+							href={`/blog/${post.slug}`}
+						/>
 					))}
 				</div>
 			)}
