@@ -15,8 +15,7 @@ html {
 }
 
 .page-limit {
-	max-width: 50rem;
-	width: 100%;
+	width: min(100%, 50rem);
 }
 
 .message {
