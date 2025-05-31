@@ -1,6 +1,6 @@
 .header {
 	background-color: var(--color-surface-default);
-	box-shadow: 0 1px 3px var(--color-shadow);
+	box-shadow: 0 2px 4px var(--color-shadow);
 	display: flex;
 	justify-content: center;
 	left: 0;
