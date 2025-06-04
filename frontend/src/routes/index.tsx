@@ -3,6 +3,8 @@ import { About } from '../pages/About'
 import { Blog } from '../pages/Blog'
 import { Contact } from '../pages/Contact'
 import { NotFound } from '../pages/NotFound'
+import { Post } from '../pages/Blog/[slug]'
+import { Project } from '../pages/Work/[id]'
 import { Work } from '../pages/Work'
 
 export const AppRoutes = () => {
@@ -10,9 +12,9 @@ export const AppRoutes = () => {
 		<Routes>
 			<Route path='/' element={<Work />} />
 			<Route path='/work' element={<Work />} />
-			<Route path='/work/:id' element={<></>} />
+			<Route path='/work/:id' element={<Project />} />
 			<Route path='/blog' element={<Blog />} />
-			<Route path='/blog/:id' element={<></>} />
+			<Route path='/blog/:slug' element={<Post />} />
 			<Route path='/about' element={<About />} />
 			<Route path='/contact' element={<Contact />} />
 			<Route path='*' element={<NotFound />} />
