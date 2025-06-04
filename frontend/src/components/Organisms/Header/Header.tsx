@@ -6,19 +6,19 @@ export const Header = () => {
 	const tabs = [
 		{
 			title: 'Work',
-			href: '/'
+			paths: ['/', '/work']
 		},
 		{
 			title: 'Blog',
-			href: '/blog'
+			paths: ['/blog']
 		},
 		{
 			title: 'About',
-			href: '/about'
+			paths: ['/about']
 		},
 		{
 			title: 'Contact',
-			href: '/contact'
+			paths: ['/contact']
 		}
 	]
 

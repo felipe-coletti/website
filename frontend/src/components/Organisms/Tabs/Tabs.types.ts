@@ -1,8 +1,8 @@
 export interface Tab {
-    title: string
-    href: string
+	title: string
+	paths: string[]
 }
 
 export interface TabsProps {
-    tabs: Tab[]
+	tabs: Tab[]
 }

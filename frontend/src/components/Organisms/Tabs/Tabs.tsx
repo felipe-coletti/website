@@ -8,11 +8,11 @@ export const Tabs = ({ tabs }: TabsProps) => {
 	return (
 		<ul className={styles.tabs}>
 			{tabs.map((tab, i) => {
-				const isActive = location.pathname === tab.href
+				const isActive = tab.paths.includes(location.pathname)
 
 				return (
 					<li key={i}>
-						<Link className={`${styles.tab} ${isActive ? styles.active : ''}`} to={tab.href}>
+						<Link className={`${styles.tab} ${isActive ? styles.active : ''}`} to={tab.paths[0]}>
 							{tab.title}
 						</Link>
 					</li>
