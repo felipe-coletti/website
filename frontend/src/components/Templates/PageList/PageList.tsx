@@ -1,5 +1,4 @@
 import { useState, useRef, useCallback, useEffect } from 'react'
-import styles from './styles.module.css'
 import type { PageListProps } from './PageList.types'
 import { Heading, Input, Text } from '../../Atoms'
 import { InfiniteScroll } from '../../Organisms'
@@ -73,7 +72,7 @@ export const PageList = <T,>({ title, placeholder, fetchItems, children }: PageL
 	}
 
 	return (
-		<PageWrapper className={styles.pageList}>
+		<PageWrapper className='page-list'>
 			<Heading>{title}</Heading>
 			<Input value={query} onChange={handleSearch} placeholder={placeholder} />
 			{message ? (

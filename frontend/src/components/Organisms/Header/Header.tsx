@@ -5,8 +5,12 @@ import { Heading, ThemeToggle } from '../../../components/Atoms'
 export const Header = () => {
 	const tabs = [
 		{
+			title: 'Home',
+			paths: ['/']
+		},
+		{
 			title: 'Work',
-			paths: ['/', '/work']
+			paths: ['/work']
 		},
 		{
 			title: 'Blog',

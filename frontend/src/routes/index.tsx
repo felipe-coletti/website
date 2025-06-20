@@ -6,11 +6,12 @@ import { NotFound } from '../pages/NotFound'
 import { Post } from '../pages/Blog/[slug]'
 import { Project } from '../pages/Work/[id]'
 import { Work } from '../pages/Work'
+import { Home } from '../pages/Home'
 
 export const AppRoutes = () => {
 	return (
 		<Routes>
-			<Route path='/' element={<Work />} />
+			<Route path='/' element={<Home />} />
 			<Route path='/work' element={<Work />} />
 			<Route path='/work/:id' element={<Project />} />
 			<Route path='/blog' element={<Blog />} />
