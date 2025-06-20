@@ -1,12 +1,14 @@
 :root {
-	--font-serif: auto;
+	--font-heading: auto;
+	--font-text: sans-serif;
+	--page-limit: 50rem;
 }
 
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	font-family: sans-serif;
+	font-family: var(--font-text);
 }
 
 body {
@@ -24,7 +26,7 @@ body {
 }
 
 .page-limit {
-	width: min(100%, 50rem);
+	width: min(100%, var(--page-limit));
 }
 
 .page-list {
