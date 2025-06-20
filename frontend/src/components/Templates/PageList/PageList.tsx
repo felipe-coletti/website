@@ -74,7 +74,7 @@ export const PageList = <T,>({ title, placeholder, fetchItems, children }: PageL
 	return (
 		<PageWrapper className='page-list'>
 			<Heading>{title}</Heading>
-			<Input value={query} onChange={handleSearch} placeholder={placeholder} />
+			<Input name='search' value={query} onChange={handleSearch} placeholder={placeholder} />
 			{message ? (
 				<div className='message'>
 					<Text>{message}</Text>
