@@ -1,4 +1,4 @@
-export * from './Card'
-export * from './Post'
+export * from './ProjectCard'
+export * from './PostCard'
 export * from './Tabs'
 export * from './ThemeToggle'

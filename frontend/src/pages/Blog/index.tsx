@@ -1,5 +1,5 @@
 import styles from './styles.module.css'
-import { PageList, Post } from '../../components'
+import { PageList, PostCard } from '../../components'
 import { formatDate, formatReadingTime } from '../../utils/formaters'
 
 type PostType = {
@@ -22,7 +22,7 @@ export const Blog = () => {
 			{(items: PostType[]) => (
 				<div className={styles.content}>
 					{items.map(post => (
-						<Post
+						<PostCard
 							key={post.slug}
 							date={`${formatDate(post.date)} • ${formatReadingTime(post.readingTime)}`}
 							title={post.title}

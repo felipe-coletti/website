@@ -1,11 +1,11 @@
 import { useState, useRef, useCallback, useEffect } from 'react'
-import type { PageListProps } from './PageList.types'
+import type { PageTemplateProps } from './PageTemplate.types'
 import { Heading, Input, Text } from '../../Atoms'
 import { InfiniteScroll } from '../../Organisms'
 import { useInfiniteScroll } from '../../../hooks/useInfiniteScroll'
 import { PageWrapper } from '../../Organisms/PageWrapper'
 
-export const PageList = <T,>({ title, placeholder, fetchItems, children }: PageListProps<T>) => {
+export const PageList = <T,>({ title, placeholder, fetchItems, children }: PageTemplateProps<T>) => {
 	const [query, setQuery] = useState('')
 	const [items, setItems] = useState<T[]>([])
 	const [page, setPage] = useState(0)
