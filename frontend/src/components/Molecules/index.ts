@@ -1,3 +1,4 @@
 export * from './Card'
-export * from './Gallery'
 export * from './Post'
+export * from './Tabs'
+export * from './ThemeToggle'

@@ -1,6 +1,7 @@
-import { Tabs } from '../Tabs'
+import { Tabs } from '../../Molecules/Tabs'
 import styles from './styles.module.css'
-import { Heading, ThemeToggle } from '../../../components/Atoms'
+import { Heading } from '../../Atoms/Heading'
+import { ThemeToggle } from '../../Molecules/ThemeToggle'
 
 export const Header = () => {
 	const tabs = [

@@ -3,7 +3,7 @@ import type { PageListProps } from './PageList.types'
 import { Heading, Input, Text } from '../../Atoms'
 import { InfiniteScroll } from '../../Organisms'
 import { useInfiniteScroll } from '../../../hooks/useInfiniteScroll'
-import { PageWrapper } from '../PageWrapper'
+import { PageWrapper } from '../../Organisms/PageWrapper'
 
 export const PageList = <T,>({ title, placeholder, fetchItems, children }: PageListProps<T>) => {
 	const [query, setQuery] = useState('')

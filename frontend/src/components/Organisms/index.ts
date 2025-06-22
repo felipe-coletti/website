@@ -1,3 +1,4 @@
+export * from './Gallery'
 export * from './Header'
 export * from './InfiniteScroll'
-export * from './Tabs'
+export * from './PageWrapper'
