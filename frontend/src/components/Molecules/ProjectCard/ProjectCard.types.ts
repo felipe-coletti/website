@@ -1,5 +1,5 @@
 export interface ProjectCardProps {
-	href: string
+	to: string
 	src: string
 	title: string
 }

@@ -1,14 +1,15 @@
 import type { ProjectCardProps } from './ProjectCard.types'
 import styles from './styles.module.css'
+import { Link } from 'react-router-dom'
 import { Heading } from '../../Atoms'
 
-export const ProjectCard = ({ href, src, title }: ProjectCardProps) => {
+export const ProjectCard = ({ to, src, title }: ProjectCardProps) => {
 	return (
-		<a className={styles.card} href={href}>
+		<Link className={styles.card} to={to}>
 			<img className={styles.cardImage} src={src} />
 			<div className={styles.overlay}>
 				<Heading size='small'>{title}</Heading>
 			</div>
-		</a>
+		</Link>
 	)
 }

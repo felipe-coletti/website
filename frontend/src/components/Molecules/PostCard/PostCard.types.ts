@@ -1,5 +1,5 @@
 export interface PostCardProps {
-	href: string
+	to: string
 	date: string
 	title: string
 }
