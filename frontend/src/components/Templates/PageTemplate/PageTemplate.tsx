@@ -5,7 +5,7 @@ import { InfiniteScroll } from '../../Organisms'
 import { useInfiniteScroll } from '../../../hooks/useInfiniteScroll'
 import { PageWrapper } from '../../Organisms/PageWrapper'
 
-export const PageList = <T,>({ title, placeholder, fetchItems, children }: PageTemplateProps<T>) => {
+export const PageTemplate = <T,>({ title, placeholder, fetchItems, children }: PageTemplateProps<T>) => {
 	const [query, setQuery] = useState('')
 	const [items, setItems] = useState<T[]>([])
 	const [page, setPage] = useState(0)

@@ -1,5 +1,5 @@
 import styles from './styles.module.css'
-import { PageList, PostCard } from '../../components'
+import { PageTemplate, PostCard } from '../../components'
 import { formatDate, formatReadingTime } from '../../utils/formaters'
 
 type PostType = {
@@ -18,7 +18,7 @@ const fetchPosts = async (page: number, query: string): Promise<PostType[]> => {
 
 export const Blog = () => {
 	return (
-		<PageList title='Blog' placeholder='Search' fetchItems={fetchPosts}>
+		<PageTemplate title='Blog' placeholder='Search' fetchItems={fetchPosts}>
 			{(items: PostType[]) => (
 				<div className={styles.content}>
 					{items.map(post => (
@@ -31,6 +31,6 @@ export const Blog = () => {
 					))}
 				</div>
 			)}
-		</PageList>
+		</PageTemplate>
 	)
 }
