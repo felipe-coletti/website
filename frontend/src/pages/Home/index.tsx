@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import styles from './styles.module.css'
 import { Heading, PageWrapper } from '../../components'
 import type { PostType } from '../../types/post'
 import { PostGallery } from '../../components/Organisms/PostGallery'
@@ -7,13 +8,15 @@ export const Home = () => {
 	const [latestPosts, setLatestPosts] = useState<PostType[]>([])
 
 	return (
-		<PageWrapper className='page-list'>
-			<Heading>Welcome</Heading>
+		<PageWrapper className={styles.container}>
+			<section className='section'>
+				<Heading>Welcome</Heading>
+			</section>
 			{latestPosts.length > 0 && (
-				<>
+				<section className='section'>
 					<Heading size='small'>Latest blog posts</Heading>
 					<PostGallery posts={latestPosts} />
-				</>
+				</section>
 			)}
 		</PageWrapper>
 	)

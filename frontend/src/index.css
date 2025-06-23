@@ -29,11 +29,10 @@ body {
 	width: min(100%, var(--page-limit));
 }
 
-.page-list {
+.section {
 	display: flex;
 	flex-direction: column;
 	gap: 1.5rem;
-	height: 100%;
 }
 
 .message {
