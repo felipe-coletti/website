@@ -1,4 +1,4 @@
-import type { ProjectType } from '../../../types/project'
+import type { ProjectType } from '../../../types'
 
 export interface ProjectGalleryProps {
 	projects: ProjectType[]
