@@ -1,12 +1,7 @@
-import { Card, Gallery, PageList } from '../../components'
+import { ProjectGallery, PageTemplate } from '../../components'
+import type { ProjectType } from '../../types/project'
 
-type CardType = {
-	id: string
-	name: string
-	src: string
-}
-
-const fetchProjects = async (page: number, query: string): Promise<CardType[]> => {
+const fetchProjects = async (page: number, query: string): Promise<ProjectType[]> => {
 	const res = await fetch(`/api/work?page=${page}&query=${encodeURIComponent(query)}`)
 	if (!res.ok) return []
 	const data = await res.json()
@@ -15,14 +10,8 @@ const fetchProjects = async (page: number, query: string): Promise<CardType[]> =
 
 export const Work = () => {
 	return (
-		<PageList title='Work' placeholder='Search' fetchItems={fetchProjects}>
-			{(items: CardType[]) => (
-				<Gallery>
-					{items.map(project => (
-						<Card key={project.id} title={project.name} src={project.src} href={`/work/${project.id}`} />
-					))}
-				</Gallery>
-			)}
-		</PageList>
+		<PageTemplate title='Work' placeholder='Search' fetchItems={fetchProjects}>
+			{(items: ProjectType[]) => <ProjectGallery projects={items} />}
+		</PageTemplate>
 	)
 }
