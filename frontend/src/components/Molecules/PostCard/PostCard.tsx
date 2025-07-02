@@ -8,7 +8,9 @@ export const PostCard = ({ to, date, title }: PostCardProps) => {
 		<div className={styles.post}>
 			<Text>{date}</Text>
 			<Link className={styles.link} to={to}>
-				<Heading size='xsmall'>{title}</Heading>
+				<Heading as='h2' size='xsmall'>
+					{title}
+				</Heading>
 			</Link>
 		</div>
 	)

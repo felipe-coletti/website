@@ -10,11 +10,13 @@ export const Home = () => {
 	return (
 		<PageWrapper className={styles.container}>
 			<section className='section'>
-				<Heading>Welcome</Heading>
+				<Heading as='h1'>Welcome</Heading>
 			</section>
 			{latestPosts.length > 0 && (
 				<section className='section'>
-					<Heading size='small'>Latest blog posts</Heading>
+					<Heading as='h2' size='small'>
+						Latest blog posts
+					</Heading>
 					<PostGallery posts={latestPosts} />
 				</section>
 			)}

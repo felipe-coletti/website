@@ -73,7 +73,7 @@ export const PageTemplate = <T,>({ title, placeholder, fetchItems, children }: P
 
 	return (
 		<PageWrapper className='section'>
-			<Heading>{title}</Heading>
+			<Heading as='h1'>{title}</Heading>
 			<Input name='search' value={query} onChange={handleSearch} placeholder={placeholder} />
 			{message ? (
 				<div className='message'>

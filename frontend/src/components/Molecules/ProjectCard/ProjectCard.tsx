@@ -8,7 +8,9 @@ export const ProjectCard = ({ to, src, title }: ProjectCardProps) => {
 		<Link className={styles.card} to={to}>
 			<img className={styles.cardImage} src={src} />
 			<div className={styles.overlay}>
-				<Heading size='small'>{title}</Heading>
+				<Heading as='h2' size='small'>
+					{title}
+				</Heading>
 			</div>
 		</Link>
 	)

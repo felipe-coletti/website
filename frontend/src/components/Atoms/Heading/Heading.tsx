@@ -1,7 +1,7 @@
 import type { HeadingProps } from './Heading.types'
 import styles from './styles.module.css'
 
-export const Heading = ({ size = 'medium', children }: HeadingProps) => {
+export const Heading = ({ as: Tag, size = 'medium', children }: HeadingProps) => {
 	let sizeStyle
 
 	switch (size) {
@@ -21,5 +21,5 @@ export const Heading = ({ size = 'medium', children }: HeadingProps) => {
 			sizeStyle = styles.xlarge
 	}
 
-	return <span className={`${styles.heading} ${sizeStyle}`}>{children}</span>
+	return <Tag className={`${styles.heading} ${sizeStyle}`}>{children}</Tag>
 }
