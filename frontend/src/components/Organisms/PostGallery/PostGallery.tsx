@@ -11,7 +11,7 @@ export const PostGallery = ({ posts }: PostGalleryProps) => {
 					key={post.slug}
 					date={`${formatDate(post.date)} • ${formatReadingTime(post.readingTime)}`}
 					title={post.title}
-					href={`/blog/${post.slug}`}
+					to={`/blog/${post.slug}`}
 				/>
 			))}
 		</div>

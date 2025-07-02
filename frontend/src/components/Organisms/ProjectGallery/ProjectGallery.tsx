@@ -6,7 +6,7 @@ export const ProjectGallery = ({ projects }: ProjectGalleryProps) => {
 	return (
 		<div className={styles.projectGallery}>
 			{projects.map(project => (
-				<ProjectCard key={project.id} title={project.name} src={project.src} href={`/work/${project.id}`} />
+				<ProjectCard key={project.id} title={project.name} src={project.src} to={`/work/${project.id}`} />
 			))}
 		</div>
 	)
