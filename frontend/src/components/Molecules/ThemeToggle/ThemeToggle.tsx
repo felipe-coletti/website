@@ -1,4 +1,5 @@
 import { useTheme } from '../../../context/ThemeContext'
+import { Button } from '../../Atoms'
 
 export function ThemeToggle() {
 	const { theme, cycleTheme } = useTheme()
@@ -10,8 +11,8 @@ export function ThemeToggle() {
 	}
 
 	return (
-		<button onClick={cycleTheme} aria-label='Toggle Theme'>
+		<Button variant='tertiary' onClick={cycleTheme} aria-label='Toggle Theme'>
 			{label[theme]}
-		</button>
+		</Button>
 	)
 }
