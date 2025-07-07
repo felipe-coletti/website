@@ -2,15 +2,14 @@ import type { ButtonProps } from './Button.types'
 import styles from './styles.module.css'
 
 export const Button = ({
-	variant = 'primary',
+	variant = 'filled',
 	icon,
 	iconPosition = 'start',
 	onClick,
 	disabled = false,
 	children
 }: ButtonProps) => {
-	const variantStyle =
-		variant === 'secondary' ? styles.secondary : variant === 'tertiary' ? styles.tertiary : styles.primary
+	const variantStyle = variant === 'outline' ? styles.outline : variant === 'ghost' ? styles.ghost : styles.filled
 
 	const classNames = [
 		styles.button,

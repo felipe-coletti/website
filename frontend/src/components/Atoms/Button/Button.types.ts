@@ -1,5 +1,5 @@
 type CommonButtonProps = {
-	variant?: 'primary' | 'secondary' | 'tertiary'
+	variant?: 'filled' | 'outline' | 'ghost'
 	iconPosition?: 'start' | 'end'
 	onClick?: () => void
 	disabled?: boolean
