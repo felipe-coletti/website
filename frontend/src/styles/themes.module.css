@@ -1,5 +1,5 @@
 .light {
-	--color-accent: #5c1a1a;
+	--color-highlight: #5c1a1a;
 
 	--color-surface-default: #ffffff;
 	--color-surface-muted: #f7f7f7;
@@ -20,7 +20,7 @@
 }
 
 .dim {
-	--color-accent: #732121;
+	--color-highlight: #732121;
 
 	--color-surface-default: #1a1a1a;
 	--color-surface-muted: #2a2a2a;
@@ -41,7 +41,7 @@
 }
 
 .dark {
-	--color-accent: #8b1e1e;
+	--color-highlight: #8b1e1e;
 
 	--color-surface-default: #0a0a0a;
 	--color-surface-muted: #141414;
