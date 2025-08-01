@@ -11,12 +11,7 @@ export const Button = ({
 }: ButtonProps) => {
 	const variantStyle = variant === 'outline' ? styles.outline : variant === 'ghost' ? styles.ghost : styles.filled
 
-	const classNames = [
-		styles.button,
-		variantStyle,
-		icon && !children && styles.iconButton,
-		disabled && styles.disabled
-	]
+	const classNames = [styles.button, variantStyle, icon && !children && styles.iconOnly, disabled && styles.disabled]
 		.filter(Boolean)
 		.join(' ')
 
