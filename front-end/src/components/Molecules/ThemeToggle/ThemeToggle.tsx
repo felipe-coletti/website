@@ -11,7 +11,7 @@ export function ThemeToggle() {
 	}
 
 	return (
-		<Button variant='tertiary' onClick={cycleTheme} aria-label='Toggle Theme'>
+		<Button hierarchy='tertiary' onClick={cycleTheme} aria-label='Toggle Theme'>
 			{label[theme]}
 		</Button>
 	)
