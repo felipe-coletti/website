@@ -11,34 +11,24 @@
 	text-transform: uppercase;
 }
 
-.default {
-	--color-button-default: var(--color-text-primary);
-	--color-button-inverse: var(--color-surface-default);
-}
-
-.inverse {
-	--color-button-default: var(--color-surface-default);
-	--color-button-inverse: var(--color-text-primary);
-}
-
 .filled,
 .outline:hover {
-	background-color: var(--color-button-default);
+	background-color: var(--color-button-surface, var(--color-text-primary));
 	border: none;
-	color: var(--color-button-inverse);
+	color: var(--color-button-text, var(--color-surface-default));
 }
 
 .outline {
 	background-color: transparent;
-	border: 1px solid var(--color-button-default);
-	color: var(--color-button-default);
+	border: 1px solid var(--color-button-surface, var(--color-text-primary));
+	color: var(--color-button-surface, var(--color-text-primary));
 	transition: background 0.2s ease;
 }
 
 .ghost {
 	background-color: transparent;
 	border: none;
-	color: var(--color-button-default);
+	color: var(--color-button-surface, var(--color-text-primary));
 }
 
 .iconOnly {
