@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect, useContext } from 'react'
-import styles from '../styles/themes.module.css'
+import styles from '../themes/themes.module.css'
 
 type Theme = 'light' | 'dim' | 'dark'
 
