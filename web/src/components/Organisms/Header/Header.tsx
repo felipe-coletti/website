@@ -1,6 +1,6 @@
 import { Tabs } from '../../Molecules/Tabs'
 import styles from './styles.module.css'
-import { Heading } from '../../Atoms/Heading'
+import { Logo } from '../../Atoms/Logo'
 import { ThemeToggle } from '../../Molecules/ThemeToggle'
 
 export const Header = () => {
@@ -30,7 +30,7 @@ export const Header = () => {
 	return (
 		<header className={styles.header}>
 			<div className={`${styles.container} page-limit`}>
-				<Heading as='h1'>Felipe Coletti</Heading>
+				<Logo />
 				<Tabs tabs={tabs} />
 				<ThemeToggle />
 			</div>
