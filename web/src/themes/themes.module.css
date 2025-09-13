@@ -20,7 +20,7 @@
 }
 
 .dim {
-	--color-highlight: #732121;
+	--color-highlight: #ee4444;
 
 	--color-surface-default: #1a1a1a;
 	--color-surface-muted: #2a2a2a;
@@ -41,7 +41,7 @@
 }
 
 .dark {
-	--color-highlight: #8b1e1e;
+	--color-highlight: #e63232;
 
 	--color-surface-default: #0a0a0a;
 	--color-surface-muted: #141414;
