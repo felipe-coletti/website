@@ -29,7 +29,7 @@ export const Header = () => {
 
 	return (
 		<header className={styles.header}>
-			<div className={`${styles.container} page-limit`}>
+			<div className={styles.container}>
 				<Logo />
 				<Tabs tabs={tabs} />
 				<ThemeToggle />

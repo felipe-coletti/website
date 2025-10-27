@@ -16,4 +16,5 @@
 	align-items: center;
 	display: flex;
 	justify-content: space-between;
+	width: min(100%, var(--page-limit));
 }
