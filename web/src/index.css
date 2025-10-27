@@ -26,10 +26,6 @@ body {
 	overflow-y: auto;
 }
 
-.page-limit {
-	width: min(100%, var(--page-limit));
-}
-
 .section {
 	display: flex;
 	flex-direction: column;

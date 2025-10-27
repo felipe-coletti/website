@@ -4,7 +4,7 @@ import styles from './PageWrapper.module.css'
 export const PageWrapper = ({ className, children }: PageWrapperProps) => {
 	return (
 		<main className={styles.pageWrapper}>
-			<div className={`page-limit ${className}`}>{children}</div>
+			<div className={`${styles.pageLimit} ${className}`}>{children}</div>
 		</main>
 	)
 }
