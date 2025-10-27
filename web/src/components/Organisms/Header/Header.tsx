@@ -1,6 +1,6 @@
-import { Tabs } from '../../Molecules/Tabs'
-import styles from './styles.module.css'
+import styles from './Header.module.css'
 import { Logo } from '../../Atoms/Logo'
+import { Tabs } from '../../Molecules/Tabs'
 import { ThemeToggle } from '../../Molecules/ThemeToggle'
 
 export const Header = () => {

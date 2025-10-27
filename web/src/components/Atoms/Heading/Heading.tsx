@@ -1,5 +1,5 @@
 import type { HeadingProps } from './Heading.types'
-import styles from './styles.module.css'
+import styles from './Heading.module.css'
 
 export const Heading = ({ as: Tag, size = 'medium', children }: HeadingProps) => {
 	const sizeStyle =

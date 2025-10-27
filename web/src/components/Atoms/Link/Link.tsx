@@ -1,5 +1,5 @@
 import type { LinkProps } from './Link.types'
-import styles from './styles.module.css'
+import styles from './Link.module.css'
 import { Link as RouterLink } from 'react-router-dom'
 
 export const Link = ({ href, children }: LinkProps) => {

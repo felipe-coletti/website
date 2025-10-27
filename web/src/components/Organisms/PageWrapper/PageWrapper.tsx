@@ -1,5 +1,5 @@
-import styles from './styles.module.css'
 import type { PageWrapperProps } from './PageWrapper.types'
+import styles from './PageWrapper.module.css'
 
 export const PageWrapper = ({ className, children }: PageWrapperProps) => {
 	return (

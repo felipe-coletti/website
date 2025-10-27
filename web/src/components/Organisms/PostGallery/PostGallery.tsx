@@ -1,5 +1,5 @@
 import type { PostGalleryProps } from './PostGallery.types'
-import styles from './styles.module.css'
+import styles from './PostGallery.module.css'
 import { PostCard } from '../../Molecules/PostCard'
 import { formatDate, formatReadingTime } from '../../../utils'
 

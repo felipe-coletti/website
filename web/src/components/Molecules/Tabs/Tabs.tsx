@@ -1,5 +1,5 @@
 import type { TabsProps } from './Tabs.types'
-import styles from './styles.module.css'
+import styles from './Tabs.module.css'
 import { Link, useLocation } from 'react-router-dom'
 
 export const Tabs = ({ tabs }: TabsProps) => {

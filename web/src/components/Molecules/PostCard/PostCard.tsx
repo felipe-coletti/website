@@ -1,5 +1,5 @@
 import type { PostCardProps } from './PostCard.types'
-import styles from './styles.module.css'
+import styles from './PostCard.module.css'
 import { Link } from 'react-router-dom'
 import { Heading, Text } from '../../Atoms'
 

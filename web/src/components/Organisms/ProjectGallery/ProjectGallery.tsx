@@ -1,5 +1,5 @@
 import type { ProjectGalleryProps } from './ProjectGallery.types'
-import styles from './styles.module.css'
+import styles from './ProjectGallery.module.css'
 import { ProjectCard } from '../../Molecules/ProjectCard'
 
 export const ProjectGallery = ({ projects }: ProjectGalleryProps) => {

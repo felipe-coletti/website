@@ -1,5 +1,5 @@
 import type { ButtonProps } from './Button.types'
-import styles from './styles.module.css'
+import styles from './Button.module.css'
 
 export const Button = ({
 	type = 'button',
