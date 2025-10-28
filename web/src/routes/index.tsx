@@ -1,12 +1,5 @@
 import { Route, Routes } from 'react-router-dom'
-import { About } from '../pages/About'
-import { Blog } from '../pages/Blog'
-import { Contact } from '../pages/Contact'
-import { NotFound } from '../pages/NotFound'
-import { Post } from '../pages/Blog/[slug]'
-import { Project } from '../pages/Work/[id]'
-import { Work } from '../pages/Work'
-import { Home } from '../pages/Home'
+import { About, Blog, Contact, NotFound, Post, Project, Work, Home } from '../pages'
 
 export const AppRoutes = () => {
 	return (
