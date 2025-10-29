@@ -1,7 +1,7 @@
 import { forwardRef } from 'react'
 import type { InfiniteScrollProps } from './InfiniteScroll.types'
 import styles from './InfiniteScroll.module.css'
-import { Text } from '../../../components'
+import { Text } from '../../Atoms/Text'
 
 export const InfiniteScroll = forwardRef<HTMLDivElement, InfiniteScrollProps>(({ children, hasMore }, ref) => {
 	return (

@@ -1,8 +1,7 @@
 import { useState } from 'react'
-import styles from './styles.module.css'
-import { Heading, PageWrapper } from '../../components'
 import type { PostType } from '../../types/post'
-import { PostGallery } from '../../components/Organisms/PostGallery'
+import styles from './Home.module.css'
+import { Heading, PageWrapper, PostGallery } from '../../components'
 
 export const Home = () => {
 	const [latestPosts, setLatestPosts] = useState<PostType[]>([])
