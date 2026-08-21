@@ -16,14 +16,33 @@ export const PageTemplate = <T,>({ title, placeholder, fetchItems, children }: P
 
 	const loadItems = useCallback(async () => {
 		if (isLoading || isError) return
+
 		setIsLoading(true)
+		
 		try {
 			const newItems = await fetchItems(page, query)
+			
 			if (newItems.length === 0) {
 				setHasMore(false)
 				return
 			}
-			setItems(prev => [...prev, ...newItems])
+
+			setItems(prev => {
+				const uniqueNewItems = newItems.filter(newItem => {
+					const anyItem = newItem as any;
+					return !prev.some(prevItem => (prevItem as any).id === anyItem.id);
+				});
+				return [...prev, ...uniqueNewItems];
+			});
+
+			if (page > 0) {
+				setHasMore(false);
+			}
+			
+			if (page === 0 && newItems.length > 0) {
+				setHasMore(false); 
+			}
+
 		} catch {
 			setIsError(true)
 			setHasMore(false)

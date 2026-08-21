@@ -1,5 +1,5 @@
 export type ProjectType = {
 	id: string
-	name: string
+	title: string
 	src: string
 }

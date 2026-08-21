@@ -1,6 +1,6 @@
 export type PostType = {
 	slug: string
-	date: string
+	publishedAt: string
 	readingTime: number
 	title: string
 }

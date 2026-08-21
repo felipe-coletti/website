@@ -9,7 +9,7 @@ export const PostGallery = ({ posts }: PostGalleryProps) => {
 			{posts.map(post => (
 				<PostCard
 					key={post.slug}
-					date={`${formatDate(post.date)} • ${formatReadingTime(post.readingTime)}`}
+					date={`${formatDate(post.publishedAt)} • ${formatReadingTime(post.readingTime)}`}
 					title={post.title}
 					to={`/blog/${post.slug}`}
 				/>
