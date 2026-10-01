@@ -1,14 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Felipe Coletti</title>
-		<meta name="description" content="The definitive (and goth) portfolio" />
-	</head>
-	<body>
-		<div id="root"></div>
-		<script type="module" src="/src/main.tsx"></script>
-	</body>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Felipe Coletti</title>
+    <link rel="stylesheet" href="src/styles/global.css">
+    <link rel="stylesheet" href="src/styles/themes.css">
+    <script src="src/scripts/theme.js" defer></script>
+    
+    <script type="module" src="src/components/fc-header.js"></script>
+    <script type="module" src="src/components/fc-router.js"></script>
+    <script type="module" src="src/components/link/fc-link.js"></script>
+    <script type="module" src="src/pages/fc-home-page.js"></script>
+    <!--<script type="module" src="src/pages/fc-blog-page.js"></script>-->
+    <script type="module" src="src/components/postCard/fc-post-card.js"></script>
+</head>
+<body>
+    <fc-header></fc-header>
+    <fc-router></fc-router>
+    <!--<fc-button variant="filled" text="Ação Primária"></fc-button>
+    <fc-button variant="outline" text="Ação Secundária"></fc-button>
+    <fc-button variant="ghost" text="Ação Terciária"></fc-button>
+
+    <div>
+        <button onclick="ThemeManager.setTheme('light')">Light</button>
+        <button onclick="ThemeManager.setTheme('dim')">Dim</button>
+        <button onclick="ThemeManager.setTheme('dark')">Dark</button>
+    </div>
+
+    <script type="module">
+        import './src/components/button/button.js'
+    </script>-->
+</body>
 </html>
