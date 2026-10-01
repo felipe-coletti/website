@@ -1,15 +1,45 @@
-class ThemeManager {
-  static setTheme(themeName) {
-    if (['light', 'dim', 'dark'].includes(themeName)) {
-      document.documentElement.setAttribute('data-theme', themeName)
-      localStorage.setItem('app-theme', themeName)
-    }
-  }
+// Script clássico (sem defer) carregado no <head> para aplicar o tema antes do primeiro paint.
+const ThemeManager = {
+    themes: ['light', 'dim', 'dark'],
+    labels: { light: 'Light', dim: 'Dim', dark: 'Dark' },
+    storageKey: 'app-theme',
+    defaultTheme: 'dark',
 
-  static init() {
-    const savedTheme = localStorage.getItem('app-theme') || 'light'
-    this.setTheme(savedTheme)
-  }
+    get current() {
+        return document.documentElement.getAttribute('data-theme') || this.defaultTheme
+    },
+
+    setTheme(themeName) {
+        if (!this.themes.includes(themeName)) return
+
+        document.documentElement.setAttribute('data-theme', themeName)
+
+        try {
+            localStorage.setItem(this.storageKey, themeName)
+        } catch {
+            // localStorage indisponível (ex: modo privado); o tema só não persiste
+        }
+
+        window.dispatchEvent(new CustomEvent('theme-change', { detail: { theme: themeName } }))
+    },
+
+    cycle() {
+        const index = this.themes.indexOf(this.current)
+        this.setTheme(this.themes[(index + 1) % this.themes.length])
+    },
+
+    init() {
+        let savedTheme = null
+
+        try {
+            savedTheme = localStorage.getItem(this.storageKey)
+        } catch {
+            savedTheme = null
+        }
+
+        this.setTheme(savedTheme || this.defaultTheme)
+    }
 }
 
+window.ThemeManager = ThemeManager
 ThemeManager.init()

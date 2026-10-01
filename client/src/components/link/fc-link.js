@@ -1,61 +1,82 @@
-// fc-link.js
+import { handleLinkClick, isInternal } from '../../scripts/navigation.js'
+
+const sheet = new CSSStyleSheet()
+
+sheet.replaceSync(`
+    :host {
+        display: inline-block;
+    }
+
+    a {
+        align-items: center;
+        border-bottom: 1px solid transparent;
+        color: var(--color-text-primary);
+        cursor: pointer;
+        display: inline-flex;
+        font-size: 0.875rem;
+        gap: 0.25rem;
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+
+    a:hover {
+        border-bottom-color: var(--color-text-primary);
+    }
+
+    .arrow {
+        transition: transform 0.2s ease;
+    }
+
+    a:hover .arrow {
+        transform: translateX(2px);
+    }
+`)
+
 class Link extends HTMLElement {
-  static get observedAttributes() {
-    return ['to']
-  }
-
-  constructor() {
-    super()
-    this.attachShadow({ mode: 'open' })
-    
-    // Estilos básicos (herdam do host se não especificado)
-    this.shadowRoot.innerHTML = `
-      <style>
-        :host {
-          display: inline;
-        }
-        a {
-          color: inherit;
-          text-decoration: none;
-          cursor: pointer;
-        }
-        a:hover {
-          text-decoration: underline;
-        }
-      </style>
-      <a part="link">
-        <slot></slot>
-      </a>
-    `
-
-    this._anchor = this.shadowRoot.querySelector('a')
-
-    this._handleClick = this._handleClick.bind(this)
-    this._anchor.addEventListener('click', this._handleClick)
-  }
-
-  attributeChangedCallback(name, oldValue, newValue) {
-    if (name === 'to') {
-      this._anchor.setAttribute('href', newValue)
+    static get observedAttributes() {
+        return ['to']
     }
-  }
 
-  _handleClick(e) {
-    // Se for um link externo ou modificado (ctrl+click), deixa o navegador agir
-    if (e.ctrlKey || e.metaKey || e.shiftKey) return
-    
-    const href = this._anchor.getAttribute('href')
-    if (href && href.startsWith('/')) {
-      e.preventDefault()
-      
-      // Dispara evento para o Router ouvir
-      this.dispatchEvent(new CustomEvent('route-change', {
-        bubbles: true,
-        composed: true,
-        detail: { path: href }
-      }))
+    constructor() {
+        super()
+
+        const shadow = this.attachShadow({ mode: 'open' })
+
+        shadow.adoptedStyleSheets = [sheet]
+        shadow.innerHTML = `
+            <a part="link">
+                <slot></slot>
+                <span class="arrow" aria-hidden="true">→</span>
+            </a>
+        `
+
+        this._anchor = shadow.querySelector('a')
+        this._anchor.addEventListener('click', (e) => handleLinkClick(e, this.to))
     }
-  }
+
+    connectedCallback() {
+        this._update()
+    }
+
+    attributeChangedCallback(name, oldValue, newValue) {
+        if (oldValue === newValue) return
+        this._update()
+    }
+
+    get to() { return this.getAttribute('to') || '#' }
+    set to(val) { this.setAttribute('to', val) }
+
+    _update() {
+        this._anchor.setAttribute('href', this.to)
+
+        if (isInternal(this.to)) {
+            this._anchor.removeAttribute('target')
+            this._anchor.removeAttribute('rel')
+        } else {
+            this._anchor.setAttribute('target', '_blank')
+            this._anchor.setAttribute('rel', 'noopener noreferrer')
+        }
+    }
 }
 
 customElements.define('fc-link', Link)

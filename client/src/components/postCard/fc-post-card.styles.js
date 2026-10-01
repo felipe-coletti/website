@@ -21,6 +21,10 @@ sheet.replaceSync(`
     .link:hover {
         text-decoration: underline;
     }
+
+    .title {
+        font-size: var(--text-h5);
+    }
 `)
 
 export const postCardStyles = sheet

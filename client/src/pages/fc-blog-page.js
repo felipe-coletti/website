@@ -1,10 +1,22 @@
-const postsContainer = document.getElementById('posts-list')
-const posts = await api.posts.latest()
+import '../components/postList/fc-post-list.js'
+import { ListPage } from '../templates/list-page.js'
+import { api } from '../scripts/api.js'
 
-for (const post of posts) {
-    const card = document.createElement('fc-post-card')
+class BlogPage extends ListPage {
+    static heading = 'Blog'
+    static placeholder = 'Search (or tag:slug)'
 
-    card.post = post
+    fetchItems({ tag }) {
+        return api.posts.list({ tag })
+    }
 
-    postsContainer.append(card)
+    createList() {
+        return document.createElement('fc-post-list')
+    }
+
+    renderItems(list, posts) {
+        list.posts = posts
+    }
 }
+
+customElements.define('fc-blog-page', BlogPage)
