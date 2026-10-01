@@ -53,9 +53,26 @@ src/
 - `GET /api/works[?tag=slug]` → `[{ id, slug, title, content, publishedAt, tags, cover? }]`
 - `GET /api/works/:slug` → projeto
 
+Slugs: posts usam um slug legível escrito à mão (`/blog/leaving-react`); projetos usam um ID
+aleatório de 6 caracteres `[0-9a-z]` gerado pelo banco (`/work/k3x9a2`), então a URL não muda se o
+projeto for renomeado. Ver `server/db/schema.sql`.
+
 Na busca das páginas de listagem, `tag:slug` filtra no servidor; qualquer outro texto filtra pelo título.
 
 ## Rodando
+
+Banco (uma vez):
+
+```bash
+createdb website
+psql -d website -f server/db/schema.sql
+psql -d website -f server/db/seed.sql      # opcional: dados de exemplo
+```
+
+Banco criado antes de `server/db/schema.sql` existir? Rode `server/db/migrate-work-slugs.sql`
+para trocar os slugs dos projetos por IDs (muda as URLs dos projetos existentes).
+
+Servidor (configure `server/.env` com `DB_HOST`, `DB_PORT`, `DB_USER`, `DB_PASSWORD`, `DB_NAME`, `DB_SSLMODE`):
 
 ```bash
 cd server && go run .   # http://localhost:8080
