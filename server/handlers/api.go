@@ -26,14 +26,15 @@ func GetPosts(c *gin.Context) {
 			Table("posts").
 			Joins("JOIN posts_tags ON posts.id = posts_tags.post_id").
 			Joins("JOIN tags ON posts_tags.tag_id = tags.id").
-			Where("tags.slug = ?", tagSlug).
+			Where("tags.slug = ? AND posts.is_published = ?", tagSlug, true).
 			Preload("Tags").
+			Order("posts.published_at DESC").
 			Find(&posts).Error; err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": "Erro ao buscar posts"})
 			return
 		}
 	} else {
-		if err := config.DB.Preload("Tags").Where("is_published = ?", true).Find(&posts).Error; err != nil {
+		if err := config.DB.Preload("Tags").Where("is_published = ?", true).Order("published_at DESC").Find(&posts).Error; err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": "Erro ao buscar posts"})
 			return
 		}
@@ -51,14 +52,15 @@ func GetWorks(c *gin.Context) {
 			Table("works").
 			Joins("JOIN works_tags ON works.id = works_tags.work_id").
 			Joins("JOIN tags ON works_tags.tag_id = tags.id").
-			Where("tags.slug = ?", tagSlug).
+			Where("tags.slug = ? AND works.is_published = ?", tagSlug, true).
 			Preload("Tags").
+			Order("works.published_at DESC").
 			Find(&works).Error; err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": "Erro ao buscar projetos"})
 			return
 		}
 	} else {
-		if err := config.DB.Preload("Tags").Where("is_published = ?", true).Find(&works).Error; err != nil {
+		if err := config.DB.Preload("Tags").Where("is_published = ?", true).Order("published_at DESC").Find(&works).Error; err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": "Erro ao buscar projetos"})
 			return
 		}
