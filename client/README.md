@@ -52,6 +52,8 @@ src/
 - `GET /api/posts/:slug` → post (o `content` é renderizado como HTML)
 - `GET /api/works[?tag=slug]` → `[{ id, slug, title, content, publishedAt, tags, cover? }]`
 - `GET /api/works/:slug` → projeto
+- `GET /api/content/:key` → `{ key, value, updatedAt }`: textos fixos do site, em HTML
+  (ex: `welcome`, exibido na home). Ficam na tabela `site_content`, pensada para o futuro painel admin.
 
 Slugs: posts usam um slug legível escrito à mão (`/blog/leaving-react`); projetos usam um ID
 aleatório de 6 caracteres `[0-9a-z]` gerado pelo banco (`/work/k3x9a2`), então a URL não muda se o
@@ -69,8 +71,10 @@ psql -d website -f server/db/schema.sql
 psql -d website -f server/db/seed.sql      # opcional: dados de exemplo
 ```
 
-Banco criado antes de `server/db/schema.sql` existir? Rode `server/db/migrate-work-slugs.sql`
-para trocar os slugs dos projetos por IDs (muda as URLs dos projetos existentes).
+Banco criado antes de `server/db/schema.sql` existir? Rode as migrações:
+
+- `server/db/migrate-work-slugs.sql`: troca os slugs dos projetos por IDs (muda as URLs dos projetos existentes)
+- `server/db/migrate-site-content.sql`: cria a tabela `site_content` com o texto de boas-vindas
 
 Servidor (configure `server/.env` com `DB_HOST`, `DB_PORT`, `DB_USER`, `DB_PASSWORD`, `DB_NAME`, `DB_SSLMODE`):
 

@@ -1,6 +1,9 @@
 -- Dados de exemplo para desenvolvimento:
 --   psql -d website -f server/db/seed.sql
 
+INSERT INTO site_content (key, value) VALUES
+    ('welcome', '<p>I''m Felipe Coletti, a developer who builds things for the web. This is where I share my work and write about what I learn.</p>');
+
 INSERT INTO tags (name, slug) VALUES
     ('Go', 'go'),
     ('Web Components', 'web-components');

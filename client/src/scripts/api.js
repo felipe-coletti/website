@@ -25,5 +25,9 @@ export const api = {
     },
     tags: {
         list: async () => (await request('/api/tags')) ?? []
+    },
+    content: {
+        // Texto fixo do site pela chave (ex: 'welcome'); null quando não existe
+        get: (key) => request(`/api/content/${encodeURIComponent(key)}`)
     }
 }

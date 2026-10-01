@@ -105,6 +105,18 @@ func GetWorkBySlug(c *gin.Context) {
 	c.JSON(http.StatusOK, work)
 }
 
+func GetContentByKey(c *gin.Context) {
+	key := c.Param("key")
+	var content models.SiteContent
+
+	if err := config.DB.Where("key = ?", key).First(&content).Error; err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": "Conteúdo não encontrado"})
+		return
+	}
+
+	c.JSON(http.StatusOK, content)
+}
+
 func GetPostsByTag(c *gin.Context) {
 	tagSlug := c.Query("tag")
 

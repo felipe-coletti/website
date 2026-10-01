@@ -63,3 +63,11 @@ CREATE TABLE works_tags (
     tag_id  INT NOT NULL REFERENCES tags(id) ON DELETE CASCADE,
     PRIMARY KEY (work_id, tag_id)
 );
+
+-- Textos fixos do site, editáveis sem mexer no código (futuro painel admin).
+-- `key` identifica onde o texto aparece (ex: 'welcome' na home); `value` é HTML.
+CREATE TABLE site_content (
+    key        TEXT PRIMARY KEY CHECK (key ~ '^[a-z0-9]+(-[a-z0-9]+)*$'),
+    value      TEXT NOT NULL,
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
