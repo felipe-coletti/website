@@ -12,7 +12,6 @@ sheet.replaceSync(`
     }
 `)
 
-// Equivalente ao antigo PostGallery: recebe os posts pela propriedade `posts`
 class PostList extends HTMLElement {
     constructor() {
         super()

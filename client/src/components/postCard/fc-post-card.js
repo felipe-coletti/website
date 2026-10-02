@@ -3,7 +3,6 @@ import { postCardStyles } from './fc-post-card.styles.js'
 import { handleLinkClick } from '../../scripts/navigation.js'
 
 class PostCard extends HTMLElement {
-    // 'heading' em vez de 'title': o atributo global title gera um tooltip nativo no host
     static get observedAttributes() {
         return ['to', 'date', 'heading']
     }

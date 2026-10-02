@@ -18,17 +18,6 @@ sheet.replaceSync(`
 
 const SEARCH_DEBOUNCE_MS = 300
 
-/**
- * Template de página de listagem (equivalente ao antigo PageTemplate).
- *
- * Subclasses definem:
- * - `static heading` e `static placeholder`
- * - `fetchItems({ tag })`: busca os itens na API
- * - `createList()`: cria o elemento que exibe os itens (precisa ter a propriedade `items` mapeada)
- * - `renderItems(list, items)`: entrega os itens filtrados ao elemento
- *
- * A busca aceita `tag:slug` (filtro no servidor) ou texto livre (filtro local pelo título).
- */
 export class ListPage extends HTMLElement {
     static heading = ''
     static placeholder = 'Search'
@@ -82,8 +71,6 @@ export class ListPage extends HTMLElement {
         clearTimeout(this._debounce)
     }
 
-    // --- Para sobrescrever nas subclasses ---
-
     async fetchItems() {
         return []
     }
@@ -93,8 +80,6 @@ export class ListPage extends HTMLElement {
     }
 
     renderItems() {}
-
-    // ---
 
     _parseQuery(query) {
         const trimmed = query.trim()
@@ -126,7 +111,6 @@ export class ListPage extends HTMLElement {
         try {
             const items = await this.fetchItems({ tag: this._tag })
 
-            // Ignora respostas de buscas que já foram substituídas por outra
             if (requestId !== this._requestId) return
 
             this._items = items

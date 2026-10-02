@@ -1,6 +1,3 @@
-// Estilos compartilhados entre os Shadow DOMs.
-// CSS global não atravessa o shadow root, então cada componente adota esta folha.
-// As variáveis de tema (--color-*) são herdadas normalmente.
 const sheet = new CSSStyleSheet()
 
 sheet.replaceSync(`
@@ -52,7 +49,6 @@ sheet.replaceSync(`
 
 export const baseStyles = sheet
 
-// Layout padrão das páginas (equivalente ao antigo PageWrapper)
 const pageSheet = new CSSStyleSheet()
 
 pageSheet.replaceSync(`

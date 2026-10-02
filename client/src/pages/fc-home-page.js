@@ -14,7 +14,7 @@ sheet.replaceSync(`
     }
 
     .intro {
-        color: var(--color-text-primary);
+        color: var(--color-text-secondary);
         display: flex;
         flex-direction: column;
         gap: 1rem;
@@ -23,7 +23,7 @@ sheet.replaceSync(`
     }
 
     .intro a {
-        color: var(--color-text-primary);
+        color: var(--color-text-secondary);
     }
 
     .latest h2 {

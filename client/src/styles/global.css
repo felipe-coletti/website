@@ -1,5 +1,5 @@
 :root {
-	--font-heading: auto;
+	--font-heading: serif;
 	--font-text: sans-serif;
 	--font-weight-heading: 400;
 	--page-limit: 50rem;
@@ -10,7 +10,6 @@
 	--text-h5: 1rem;
 }
 
-/* Só html/body: um seletor * aqui sobrescreveria os estilos :host dos componentes */
 html,
 body {
 	margin: 0;
@@ -32,7 +31,6 @@ fc-router {
 	flex: 1;
 }
 
-/* Evita o "flash" de componentes ainda não definidos */
 fc-header:not(:defined) {
 	display: block;
 	min-height: 4rem;

@@ -18,7 +18,6 @@ class Button extends HTMLElement {
     }
 
     connectedCallback() {
-        // Escuta no próprio host (capture) para bloquear o clique antes de qualquer listener externo
         this.addEventListener('click', this._handleClick, true)
 
         this._updateContent()
@@ -48,8 +47,6 @@ class Button extends HTMLElement {
         }
     }
 
-    // O evento 'click' nativo já atravessa o shadow root (composed), então basta
-    // impedir que ele chegue aos listeners externos quando o botão está desabilitado
     _handleClick(e) {
         if (this.hasAttribute('disabled')) {
             e.preventDefault()

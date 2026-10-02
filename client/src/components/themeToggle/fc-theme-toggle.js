@@ -1,6 +1,5 @@
 import '../button/fc-button.js'
 
-// Depende do ThemeManager global (src/scripts/theme.js), carregado no <head>
 class ThemeToggle extends HTMLElement {
     constructor() {
         super()

@@ -1,4 +1,3 @@
-// Tabela de rotas: cada página é carregada sob demanda (import dinâmico)
 export const routes = [
     { path: '/', tag: 'fc-home-page', title: '', load: () => import('./pages/fc-home-page.js') },
     { path: '/work', tag: 'fc-work-page', title: 'Work', load: () => import('./pages/fc-work-page.js') },

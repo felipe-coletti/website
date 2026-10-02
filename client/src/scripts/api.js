@@ -1,4 +1,3 @@
-// Mesma origem: o servidor Go serve tanto o client quanto a API
 const API_BASE = ''
 
 async function request(path) {
@@ -27,7 +26,6 @@ export const api = {
         list: async () => (await request('/api/tags')) ?? []
     },
     content: {
-        // Texto fixo do site pela chave (ex: 'welcome'); null quando não existe
         get: (key) => request(`/api/content/${encodeURIComponent(key)}`)
     }
 }

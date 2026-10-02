@@ -1,4 +1,3 @@
-// Script clássico (sem defer) carregado no <head> para aplicar o tema antes do primeiro paint.
 const ThemeManager = {
     themes: ['light', 'dim', 'dark'],
     labels: { light: 'Light', dim: 'Dim', dark: 'Dark' },
@@ -16,9 +15,7 @@ const ThemeManager = {
 
         try {
             localStorage.setItem(this.storageKey, themeName)
-        } catch {
-            // localStorage indisponível (ex: modo privado); o tema só não persiste
-        }
+        } catch {}
 
         window.dispatchEvent(new CustomEvent('theme-change', { detail: { theme: themeName } }))
     },

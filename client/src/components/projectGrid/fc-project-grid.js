@@ -11,7 +11,6 @@ sheet.replaceSync(`
     }
 `)
 
-// Equivalente ao antigo ProjectGallery: recebe os projetos pela propriedade `projects`
 class ProjectGrid extends HTMLElement {
     constructor() {
         super()

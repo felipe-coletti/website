@@ -37,9 +37,7 @@ class Router extends HTMLElement {
     }
 
     connectedCallback() {
-        // Botões voltar/avançar do navegador
         window.addEventListener('popstate', this._handlePopState)
-        // Pedidos de navegação vindos dos componentes (fc-link, fc-post-card, ...)
         window.addEventListener(NAVIGATE_EVENT, this._handleNavigate)
 
         this._render()
@@ -50,10 +48,6 @@ class Router extends HTMLElement {
         window.removeEventListener(NAVIGATE_EVENT, this._handleNavigate)
     }
 
-    /**
-     * Navega para um novo caminho sem recarregar a página
-     * @param {string} path - ex: '/about'
-     */
     navigate(path) {
         const current = window.location.pathname + window.location.search + window.location.hash
         if (path === current) return
@@ -76,7 +70,6 @@ class Router extends HTMLElement {
             return
         }
 
-        // Uma navegação mais recente começou enquanto esta página carregava
         if (renderId !== this._renderId) return
 
         const page = document.createElement(route.tag)

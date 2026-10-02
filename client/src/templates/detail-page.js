@@ -52,14 +52,6 @@ sheet.replaceSync(`
     }
 `)
 
-/**
- * Template de página de detalhe (post ou projeto), identificada pelo atributo `slug`
- * que o fc-router preenche a partir da URL.
- *
- * Subclasses definem:
- * - `fetchItem(slug)`: busca o item na API (retorna null quando não existe)
- * - `formatMeta(item)`: texto exibido abaixo do título (opcional)
- */
 export class DetailPage extends HTMLElement {
     constructor() {
         super()
@@ -96,8 +88,6 @@ export class DetailPage extends HTMLElement {
 
     get slug() { return this.getAttribute('slug') || '' }
 
-    // --- Para sobrescrever nas subclasses ---
-
     async fetchItem() {
         return null
     }
@@ -105,8 +95,6 @@ export class DetailPage extends HTMLElement {
     formatMeta() {
         return ''
     }
-
-    // ---
 
     async _load() {
         this._setMessage('Loading...')
@@ -144,7 +132,6 @@ export class DetailPage extends HTMLElement {
         this._tags.replaceChildren(...tags)
         this._tags.hidden = tags.length === 0
 
-        // O conteúdo vem do próprio banco (escrito pelo autor) e é tratado como HTML confiável
         this._content.innerHTML = item.content ?? ''
 
         this._message.hidden = true
