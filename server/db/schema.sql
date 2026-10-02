@@ -1,10 +1,3 @@
--- Schema do banco. Rode uma vez em um banco vazio:
---   psql -d website -f server/db/schema.sql
-
--- Posts usam slug legível, escrito à mão (ex: 'leaving-react').
--- Projetos usam um ID curto e aleatório (ex: 'k3x9a2'), gerado pelo próprio banco:
--- a URL não muda se o projeto for renomeado.
-
 CREATE TABLE tags (
     id   SERIAL PRIMARY KEY,
     name TEXT UNIQUE NOT NULL,
@@ -21,8 +14,6 @@ CREATE TABLE posts (
     published_at TIMESTAMPTZ
 );
 
--- Gera um ID de 6 caracteres [0-9a-z] que ainda não esteja em uso em works.slug.
--- 36^6 ≈ 2,2 bilhões de combinações: o loop praticamente nunca repete.
 CREATE FUNCTION generate_work_slug() RETURNS TEXT AS $$
 DECLARE
     alphabet CONSTANT TEXT := '0123456789abcdefghijklmnopqrstuvwxyz';
@@ -64,8 +55,6 @@ CREATE TABLE works_tags (
     PRIMARY KEY (work_id, tag_id)
 );
 
--- Textos fixos do site, editáveis sem mexer no código (futuro painel admin).
--- `key` identifica onde o texto aparece (ex: 'welcome' na home); `value` é HTML.
 CREATE TABLE site_content (
     key        TEXT PRIMARY KEY CHECK (key ~ '^[a-z0-9]+(-[a-z0-9]+)*$'),
     value      TEXT NOT NULL,

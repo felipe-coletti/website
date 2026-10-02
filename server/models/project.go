@@ -2,7 +2,6 @@ package models
 
 import "time"
 
-// Slug é um ID curto e aleatório (ex: "k3x9a2") gerado pelo banco; ver db/schema.sql.
 type Work struct {
 	ID          uint       `json:"id" gorm:"primaryKey"`
 	Title       string     `json:"title" gorm:"not null"`

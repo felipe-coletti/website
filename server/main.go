@@ -57,8 +57,6 @@ func main() {
 	}
 }
 
-// serveClient serve o front-end estático e devolve o index.html para qualquer rota
-// desconhecida fora de /api, para que o fc-router resolva a rota no navegador.
 func serveClient(r *gin.Engine) {
 	clientDir := os.Getenv("CLIENT_DIR")
 	if clientDir == "" {

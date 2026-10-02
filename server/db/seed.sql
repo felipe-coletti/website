@@ -1,6 +1,3 @@
--- Dados de exemplo para desenvolvimento:
---   psql -d website -f server/db/seed.sql
-
 INSERT INTO site_content (key, value) VALUES
     ('welcome', '<p>I''m Felipe Coletti, a developer who builds things for the web. This is where I share my work and write about what I learn.</p>');
 
@@ -13,7 +10,6 @@ INSERT INTO posts (title, slug, content, is_published, published_at) VALUES
     ('A Go backend', 'go-backend', '<p>Gin + GORM + Postgres.</p>', true, now() - interval '10 days'),
     ('Draft', 'draft', '<p>Should not appear.</p>', false, NULL);
 
--- Sem slug: o banco gera o ID do projeto
 INSERT INTO works (title, content, is_published, published_at) VALUES
     ('Portfolio', '<p>This website.</p>', true, now()),
     ('Website API', '<p>The Go backend behind this website.</p>', true, now() - interval '30 days');

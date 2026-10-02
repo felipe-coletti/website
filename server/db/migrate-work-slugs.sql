@@ -1,9 +1,3 @@
--- Migração para um banco criado antes do schema.sql existir
--- (projetos com slug baseado no nome). Troca os slugs atuais por IDs aleatórios.
---   psql -d website -f server/db/migrate-work-slugs.sql
---
--- ATENÇÃO: muda as URLs de todos os projetos existentes.
-
 BEGIN;
 
 CREATE OR REPLACE FUNCTION generate_work_slug() RETURNS TEXT AS $$

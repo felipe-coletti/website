@@ -1,7 +1,3 @@
--- Migração para um banco criado antes da tabela site_content existir.
---   psql -d website -f server/db/migrate-site-content.sql
--- Pode rodar mais de uma vez: não recria a tabela nem sobrescreve um texto já salvo.
-
 BEGIN;
 
 CREATE TABLE IF NOT EXISTS site_content (
