@@ -9,10 +9,13 @@ sheet.replaceSync(`
         color: var(--color-text-primary);
         font-family: inherit;
         font-size: 0.875rem;
-        outline-color: var(--color-text-primary);
         padding-block: 0.75rem;
         padding-inline: 1.25rem;
         width: 100%;
+    }
+    
+    .search:focus {
+        outline-color: var(--color-text-primary);
     }
 `)
 

@@ -14,7 +14,6 @@ sheet.replaceSync(`
     }
 
     .intro {
-        color: var(--color-text-secondary);
         display: flex;
         flex-direction: column;
         gap: 1rem;

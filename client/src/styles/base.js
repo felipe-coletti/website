@@ -25,7 +25,8 @@ sheet.replaceSync(`
     h4 { font-size: var(--text-h4); }
     h5 { font-size: var(--text-h5); }
 
-    .text {
+    .text,
+    .content :is(p, li) {
         color: var(--color-text, var(--color-text-secondary));
         font-size: 0.875rem;
     }
