@@ -1,7 +1,7 @@
 CREATE TABLE tags (
     id   SERIAL PRIMARY KEY,
     name TEXT UNIQUE NOT NULL,
-    slug TEXT UNIQUE NOT NULL
+    slug TEXT UNIQUE NOT NULL CHECK (slug ~ '^[a-z0-9]+(-[a-z0-9]+)*$')
 );
 
 CREATE TABLE posts (
@@ -59,4 +59,19 @@ CREATE TABLE site_content (
     key        TEXT PRIMARY KEY CHECK (key ~ '^[a-z0-9]+(-[a-z0-9]+)*$'),
     value      TEXT NOT NULL,
     updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+CREATE TABLE about (
+    id         INT PRIMARY KEY DEFAULT 1 CHECK (id = 1),
+    title      TEXT NOT NULL,
+    content    TEXT NOT NULL DEFAULT '',
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+CREATE TABLE contact_links (
+    id       SERIAL PRIMARY KEY,
+    type     TEXT NOT NULL CHECK (type ~ '^[a-z0-9]+(-[a-z0-9]+)*$'),
+    label    TEXT NOT NULL,
+    url      TEXT NOT NULL CHECK (url ~ '^(mailto:|https://)'),
+    position INT NOT NULL DEFAULT 0
 );
